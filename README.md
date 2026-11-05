@@ -10,23 +10,21 @@ Os documentos são organizados no diretório `data/`, com indexação e armazena
 
 <img width="800" height="2884" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/7c10c657-38c9-41f2-98a2-414e4843206f" />
 
-
-| Etapa | Responsabilidade no Nutri RAG |
-|---|---|
-| 1. Document Ingestion | Carrega os PDFs e seus metadados |
-| 2. Text Extraction | Extrai o texto de cada página |
-| 3. Chunking | Divide o texto em chunks de 1.000 caracteres, com overlap de 150 |
-| 4. Embeddings | Converte os chunks em vetores numéricos |
-| 5. Vector Store | Armazena o índice vetorial no FAISS |
-| 6. User Question | Recebe a pergunta do usuário |
-| 7. Query Embedding | Converte a pergunta em vetor |
-| 8. Retrieval | Recupera os 50 chunks mais similares |
-| 9. Reranking | Utiliza Cross-Encoder para selecionar os 5 melhores |
-| 10. Context Engineering | Organiza os trechos com identificação do PDF e página |
-| 11. Prompt Engineering | Define instruções, restrições e formato das referências |
-| 12. LLM Generation | Gemini gera a resposta utilizando o contexto |
-| 13. Final Answer | Retorna a resposta com citações |
-
+| Etapa                   | Responsabilidade no Nutri RAG                                    |
+| ----------------------- | ---------------------------------------------------------------- |
+| 1. Document Ingestion   | Carrega os PDFs e seus metadados                                 |
+| 2. Text Extraction      | Extrai o texto de cada página                                    |
+| 3. Chunking             | Divide o texto em chunks de 1.000 caracteres, com overlap de 150 |
+| 4. Embeddings           | Converte os chunks em vetores numéricos                          |
+| 5. Vector Store         | Armazena o índice vetorial no FAISS                              |
+| 6. User Question        | Recebe a pergunta do usuário                                     |
+| 7. Query Embedding      | Converte a pergunta em vetor                                     |
+| 8. Retrieval            | Recupera os 50 chunks mais similares                             |
+| 9. Reranking            | Utiliza Cross-Encoder para selecionar os 5 melhores              |
+| 10. Context Engineering | Organiza os trechos com identificação do PDF e página            |
+| 11. Prompt Engineering  | Define instruções, restrições e formato das referências          |
+| 12. LLM Generation      | Gemini gera a resposta utilizando o contexto                     |
+| 13. Final Answer        | Retorna a resposta com citações                                  |
 
 ## Requisitos
 
@@ -65,13 +63,23 @@ O índice local é salvo em `vector_store/`
 python main.py
 ```
 
-| Escopo | Pergunta |
-| --- | --- |
-| Coberta pelos documentos | Quais são as diferenças entre margarina e manteiga? |
-| Coberta pelos documentos | Qual é a tabela nutricional do tomate de árvore? |
-| Coberta pelos documentos | Quais são os benefícios da linhaça? |
-| Fora do escopo atual | Quais são os valores nutricionais do morango branco chileno? |
-| Fora do escopo atual | Quais alimentos são comuns no Chile? |
-| Fora do escopo atual | Como fazer hambúrguer? |
+| Escopo                   | Pergunta                                                     |
+| ------------------------ | ------------------------------------------------------------ |
+| Coberta pelos documentos | Quais são as diferenças entre margarina e manteiga?          |
+| Coberta pelos documentos | Qual é a tabela nutricional do tomate de árvore?             |
+| Coberta pelos documentos | Quais são os benefícios da linhaça?                          |
+| Fora do escopo atual     | Quais são os valores nutricionais do morango branco chileno? |
+| Fora do escopo atual     | Quais alimentos são comuns no Chile?                         |
+| Fora do escopo atual     | Como fazer hambúrguer?                                       |
 
 As respostas usam os trechos recuperados e citam o nome do PDF e a página. O assistente informa quando não encontra a resposta nos documentos.
+
+## Interface web
+
+Inicie a interface no navegador:
+
+```bash
+streamlit run src/nutri_rag/web.py
+```
+
+O navegador abrirá a página local do Nutri RAG. A primeira consulta carrega o índice FAISS e os modelos locais; as consultas seguintes reutilizam o índice enquanto a aplicação estiver aberta.
