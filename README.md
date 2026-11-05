@@ -83,3 +83,6 @@ streamlit run src/nutri_rag/web.py
 ```
 
 O navegador abrirá a página local do Nutri RAG. A primeira consulta carrega o índice FAISS e os modelos locais; as consultas seguintes reutilizam o índice enquanto a aplicação estiver aberta.
+
+<img width="1912" height="949" alt="Captura de Tela 2026-11-05 às 10 01 23" src="https://github.com/user-attachments/assets/c327fc93-9fb9-4600-a8b4-d0b3f5127601" />
+
