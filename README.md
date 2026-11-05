@@ -43,6 +43,13 @@ O índice local é salvo em `vector_store/
 python main.py
 ```
 
-Exemplo: “Quais são os princípios de uma alimentação adequada e saudável?”
+| Escopo | Pergunta |
+| --- | --- |
+| Coberta pelos documentos | Quais são as diferenças entre margarina e manteiga? |
+| Coberta pelos documentos | Qual é a tabela nutricional do tomate de árvore? |
+| Coberta pelos documentos | Quais são os benefícios da linhaça? |
+| Fora do escopo atual | Quais são os valores nutricionais do morango branco chileno? |
+| Fora do escopo atual | Quais alimentos são comuns no Chile? |
+| Fora do escopo atual | Como fazer hambúrguer? |
 
 As respostas usam os trechos recuperados e citam o nome do PDF e a página. O assistente informa quando não encontra a resposta nos documentos.
