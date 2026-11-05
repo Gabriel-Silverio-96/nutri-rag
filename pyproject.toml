@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nutri-rag"
+version = "0.1.0"
+description = "RAG local para consulta a documentos brasileiros de alimentação e nutrição"
+requires-python = ">=3.10"
+dependencies = [
+    "faiss-cpu>=1.8.0",
+    "langchain-community>=0.3.0",
+    "langchain-google-genai>=2.0.0",
+    "langchain-huggingface>=0.1.0",
+    "langchain-text-splitters>=0.3.0",
+    "sentence-transformers>=3.0.0",
+    "pypdf>=5.0.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+nutri-rag = "nutri_rag.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
