@@ -1,0 +1,27 @@
+{
+  "document_id": "alimentos_regionais_brasileiros",
+  "title": "Alimentos regionais brasileiros",
+  "subtitle": "2ª edição",
+  "authors": [
+    "Brasil. Ministério da Saúde. Secretaria de Atenção à Saúde. Departamento de Atenção Básica."
+  ],
+  "publisher": "Ministério da Saúde",
+  "publication_year": 2015,
+  "language": "pt-BR",
+  "document_type": "publicação técnica",
+  "description": "Material sobre alimentos regionais brasileiros, com informações sobre frutas, hortaliças e outros alimentos, seus usos e preparo.",
+  "subjects": [
+    "alimentação e nutrição",
+    "alimentos regionais",
+    "frutas",
+    "hortaliças",
+    "cultura alimentar brasileira"
+  ],
+  "keywords": [
+    "Política Nacional de Alimentação e Nutrição",
+    "alimentos regionais brasileiros",
+    "biodiversidade alimentar",
+    "preparo de alimentos"
+  ],
+  "source_file": "alimentos_regionais_brasileiros.pdf"
+}
