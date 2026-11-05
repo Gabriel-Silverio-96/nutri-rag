@@ -6,6 +6,28 @@ A solução implementa um pipeline de processamento que inclui extração de tex
 
 Os documentos são organizados no diretório `data/`, com indexação e armazenamento vetorial local utilizando **FAISS**. A geração de embeddings e o reranking são realizados localmente com **Sentence Transformers**, permitindo maior controle sobre o processamento e a recuperação das informações.
 
+## Fluxo do Nutri RAG
+
+<img width="800" height="2884" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/7c10c657-38c9-41f2-98a2-414e4843206f" />
+
+
+| Etapa | Responsabilidade no Nutri RAG |
+|---|---|
+| 1. Document Ingestion | Carrega os PDFs e seus metadados |
+| 2. Text Extraction | Extrai o texto de cada página |
+| 3. Chunking | Divide o texto em chunks de 1.000 caracteres, com overlap de 150 |
+| 4. Embeddings | Converte os chunks em vetores numéricos |
+| 5. Vector Store | Armazena o índice vetorial no FAISS |
+| 6. User Question | Recebe a pergunta do usuário |
+| 7. Query Embedding | Converte a pergunta em vetor |
+| 8. Retrieval | Recupera os 50 chunks mais similares |
+| 9. Reranking | Utiliza Cross-Encoder para selecionar os 5 melhores |
+| 10. Context Engineering | Organiza os trechos com identificação do PDF e página |
+| 11. Prompt Engineering | Define instruções, restrições e formato das referências |
+| 12. LLM Generation | Gemini gera a resposta utilizando o contexto |
+| 13. Final Answer | Retorna a resposta com citações |
+
+
 ## Requisitos
 
 - Python 3.10 ou superior
@@ -35,7 +57,7 @@ Recrie o índice depois de alterar os PDFs ou seus metadados, trocar o modelo lo
 python main.py --index-only --rebuild
 ```
 
-O índice local é salvo em `vector_store/
+O índice local é salvo em `vector_store/`
 
 ## Fazer perguntas
 
